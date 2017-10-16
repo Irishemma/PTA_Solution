@@ -1,5 +1,5 @@
-// Äæ×ªÁ´±í
-
+ï»¿// é€†è½¬é“¾è¡¨
+//Reverse the Link
 
 #include <iostream>
 #include <vector>
