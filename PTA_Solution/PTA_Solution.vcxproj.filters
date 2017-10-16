@@ -51,10 +51,16 @@
     <ClCompile Include="aa.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="02-线性结构3.cpp">
+    <ClCompile Include="01-复杂度1 最大子列和问题.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="01-复杂度1 最大子列和问题.cpp">
+    <ClCompile Include="01-复杂度2 Maximum Subsequence Sum.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="02-线性结构2 一元多项式的乘法与加法运算.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="02-线性结构3 Reversing Linked List.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

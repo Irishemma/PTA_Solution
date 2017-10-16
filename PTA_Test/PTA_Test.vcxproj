@@ -18,9 +18,6 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\PTA_Solution\01-复杂度2 Maximum Subsequence Sum.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CF4E068E-6074-4E73-8B5B-F21FC19CA472}</ProjectGuid>
     <RootNamespace>PTA_Test</RootNamespace>
