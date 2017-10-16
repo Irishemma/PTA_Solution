@@ -48,10 +48,13 @@
     <ClCompile Include="05-树8.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="aa.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="02-线性结构3.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="aa.cpp">
+    <ClCompile Include="01-复杂度1 最大子列和问题.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
