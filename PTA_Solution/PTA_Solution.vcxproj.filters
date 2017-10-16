@@ -15,42 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="05-树9-2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="06-图1.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="06-图2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="06-图3.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="02-3.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="02-3-1.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="02-3-2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="02-4.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="04-树6.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="05-树7.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="05-树8.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="aa.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="01-复杂度1 最大子列和问题.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
