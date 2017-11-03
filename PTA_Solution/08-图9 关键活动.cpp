@@ -18,18 +18,22 @@
 6->7
 
 关键活动，就是计算最早完工时间后，再逆拓扑排序计算最晚完工时间
-最后记录关键活动
+最后用key记录关键活动，只要一条边两点各自最早和最晚完工时间相等，则为关键路径
+有两个算例不能AC，猜测是多出口。最晚完工时间的初始值应该设为全局最早完工时间，
+因为那些早完成的出口可以等到全局完工再结束。
 
 */
 
 #include <iostream>
 #include <queue>
+#include <stack>
 using namespace std;
 #define INF 9999999
 
 int n, m, a, b, c;
 int M[100][100];
-int InputOrder[100][100];
+int key[100][100];
+stack<int> s[100];
 int inDegree[100];
 int outDegree[100];
 int Earliest[100];
@@ -38,14 +42,15 @@ int Latest[100];
 int main() {
 	cin >> n >> m;
 	fill (M[0], (M[0] + 100 * 100), INF);
-	fill (InputOrder[0], (InputOrder[0] + 100 * 100), INF);
+	fill (key[0], (key[0] + 100 * 100), INF);
+	fill (outDegree, outDegree + 100, 0);
+	fill (Earliest, Earliest + 100, 0);
+	fill (Latest, Latest + 100, INF);
 	for (int i = 0; i < m; i++) {
 		cin >> a >> b >> c;
 		M[b - 1][a - 1] = c;
-		InputOrder[b - 1][a - 1] = i;
+		s[a - 1].push (b - 1);
 	}
-	fill (Earliest, Earliest + 100, 0);
-	fill (Latest, Latest + 100, INF);
 	queue<int> q, p;
 	int cnt = 0;
 	int comtime = 0;
@@ -63,7 +68,7 @@ int main() {
 		if (outDegree[i] == 0)
 			p.push (i);
 	}
-	while (!q.empty()) {			//最早完工时间
+	while (!q.empty()) {
 		int v = q.front();
 		q.pop();
 		cnt++;
@@ -85,9 +90,10 @@ int main() {
 	cout << comtime << endl;
 	for (int i = 0; i < n; i++) {
 		if (outDegree[i] == 0)
-			Latest[i] = Earliest[i];
+			Latest[i] = comtime;
+		//Latest[i] = Earliest[i];
 	}
-	while (!p.empty()) {			//最晚完工时间
+	while (!p.empty()) {
 		int v = p.front();
 		p.pop();
 		for (int w = 0; w < n; w++) {
@@ -96,35 +102,18 @@ int main() {
 					Latest[w] = Latest[v] - M[v][w];
 				if (--outDegree[w] == 0)
 					p.push (w);
+				if (Latest[v] == Earliest[v] && Latest[w] == Earliest[w])
+					key[w][v] = 1;
 			}
 		}
 	}
 	for (int i = 0; i < n; i++) {
-		inDegree[i] = 0;
-		for (int j = 0; j < n; j++) {
-			if (M[i][j] != INF)
-				inDegree[i]++;
+		while (!s[i].empty()) {
+			int v = s[i].top();
+			s[i].pop();
+			if (key[i][v] != INF)
+				cout << i + 1 << "->" << v + 1 << endl;
 		}
-		if (inDegree[i] == 0 && Latest[i] == Earliest[i])
-			q.push (i);
-	}
-	while (!q.empty()) {
-		int v = q.front();
-		q.pop();
-		p.push (v);
-		for (int w = 0; w < n; w++) {
-			if (M[w][v] != INF && Earliest[w] == Latest[w])
-				q.push (w);
-		}
-	}
-	int a = p.front();
-	p.pop();
-	int b;
-	while (!p.empty()) {
-		b = p.front();
-		p.pop();
-		cout << a + 1  << "->" <<  b + 1 << endl;
-		a = b;
 	}
 	return 0;
 }

@@ -9,6 +9,7 @@
 输出样例:
 3 40
 
+简单的Dijkstra算法可以解决，判断路径最短之后，再多加个花费判断即可。
 
 */
 #include <iostream>
@@ -26,7 +27,7 @@ int main() {
 	vector< vector<int> > dm (n);
 	vector< vector<int> > cm (n);
 	for (int i = 0; i < n; i++) {
-		dm[i].resize (n);
+		dm[i].resize (n, INF);
 		cm[i].resize (n);
 	}
 	for (int i = 0; i < m; i++) {
@@ -41,12 +42,26 @@ int main() {
 	while (1) {
 		int minDist = INF;
 		int v = 0;
-		for (int i = 0; i < n; i++) {
-			if (!collected[i] && dist[i] < minDist) {
-				minDist = dist[i];
-				v = i;
+		for (int w = 0; w < n; w++) {
+			if (!collected[w] && dist[w] < minDist) {
+				minDist = dist[w];
+				v = w;
 			}
 		}
+		if (v == d) {
+			break;
+		}
+		collected[v] = true;
+		for (int w = 0; w < n; w++) {
+			if (!collected[w])
+				if ((dist[v] + dm[v][w] < dist[w]) ||
+				        (dist[v] + dm[v][w] == dist[w] && cost[v] + cm[v][w] < cost[w])) {
+					dist[w] = dist[v] + dm[v][w];
+					cost[w] = cost[v] + cm[v][w];
+					path[w] = v;
+				}
+		}
 	}
+	cout << dist[d] << ' ' << cost[d];
 	return 0;
 }
